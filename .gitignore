@@ -1,0 +1,8 @@
+# Рабочие файлы, не нужные на GitHub Pages
+raw/
+brief.md
+images.json
+lab/
+node_modules/
+.DS_Store
+Thumbs.db

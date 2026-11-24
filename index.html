@@ -3,683 +3,496 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>СИП-Дом — строим дома из сэндвич-панелей</title>
-<meta name="description" content="Производство и строительство домов из СИП-панелей под ключ. Быстро, тепло, по фиксированной смете.">
+<title>СИП-Дом · дома из СИП-панелей, смета в договоре</title>
+<meta name="description" content="СИП-Дом строит загородные дома из СИП-панелей: каталог проектов, разрез стены, этапы стройки и расчёт сметы.">
+<meta property="og:title" content="СИП-Дом · дома из СИП-панелей">
+<meta property="og:description" content="Показываем построенные дома, а не рендеры. Смета фиксируется в договоре.">
+<meta property="og:image" content="assets/og.jpg">
+<meta name="color-scheme" content="light">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='8' fill='%23245540'/%3E%3Cpath d='M10 34 32 16l22 18v18H10z' fill='%23f2efe8'/%3E%3Cpath d='M27 52V36h10v16' fill='%23245540'/%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geologica:wght@400;500;600;700&family=IBM+Plex+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="vibe.css">
 <style>
-  :root {
-    --bg: #faf7f2;
-    --surface: #ffffff;
-    --text: #2a2622;
-    --muted: #6d655c;
-    --accent: #b5652b;
-    --accent-dark: #8f4d1e;
-    --wood: #3d2e22;
-    --line: #e7e0d5;
-    --radius: 14px;
+  .v-page {
+    --v-canvas:#f2efe8; --v-surface:#fffdf9; --v-ink:#1c241d; --v-ink-soft:#626a5f;
+    --v-accent:#245540; --v-accent-ink:#f7f5ee; --v-shadow-color:28 36 29;
+    --v-radius:4px; --v-measure:58ch;
+    --v-font-display:"Geologica","Arial Black",system-ui,sans-serif;
+    --v-font-text:"IBM Plex Sans",system-ui,sans-serif;
   }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --bg: #1c1915;
-      --surface: #26221d;
-      --text: #f1ebe2;
-      --muted: #a9a097;
-      --accent: #d9863f;
-      --accent-dark: #e89a5a;
-      --wood: #0f0c09;
-      --line: #3a342c;
-    }
-  }
-  :root[data-theme="dark"] {
-    --bg: #1c1915;
-    --surface: #26221d;
-    --text: #f1ebe2;
-    --muted: #a9a097;
-    --accent: #d9863f;
-    --accent-dark: #e89a5a;
-    --wood: #0f0c09;
-    --line: #3a342c;
+  .v-page h1,.v-page h2,.v-page h3{font-family:var(--v-font-display);font-weight:600;letter-spacing:-.025em}
+  .v-page p{text-wrap:pretty}
+  .eyebrow{font-size:.75rem;letter-spacing:.16em;text-transform:uppercase;color:var(--v-accent);font-weight:600}
+  .v-page .lead{font-size:clamp(1.05rem,1.5vw,1.3rem);line-height:1.5;color:var(--v-ink-soft);max-width:52ch}
+  .sec{position:relative;padding-block:clamp(4.5rem,9vw,8rem)}
+  .sec--tight{padding-block:clamp(3rem,6vw,5rem)}
+  .sec--paper{background:var(--v-surface)}
+  .sec--ink{background:#19281f;color:#f4f2ea}
+  .sec--ink .eyebrow{color:#bcd1bd}
+  .sec--ink .lead{color:#c3cec2}
+  .sec-head{display:grid;gap:14px;margin-bottom:clamp(28px,4vw,54px)}
+  .sec-head h2{font-size:clamp(1.9rem,3.6vw,3rem);line-height:1.08;max-width:22ch}
+  .sec-head .lead{max-width:60ch}
+  .v-page a{text-decoration:none}
+  .v-page a.v-btn{color:var(--v-accent-ink)}
+  .v-page a.v-btn--ghost{color:var(--v-ink)}
+  .sec--ink a.v-btn--ghost{color:#f4f2ea;box-shadow:inset 0 0 0 1px rgba(244,242,234,.4)}
+
+  /* шапка */
+  .site-head{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--v-canvas) 94%,transparent);backdrop-filter:blur(14px);border-bottom:1px solid var(--v-hair)}
+  .site-head .v-wrap{display:flex;align-items:center;gap:24px;min-height:68px}
+  .brand{display:flex;align-items:center;gap:10px;font-family:var(--v-font-display);font-weight:700;font-size:1.06rem;letter-spacing:-.02em;color:var(--v-ink)}
+  .brand i{width:28px;height:28px;display:grid;place-items:center;background:var(--v-accent);color:var(--v-accent-ink);border-radius:3px;font-style:normal;font-size:1rem}
+  .brand span{color:var(--v-accent)}
+  .site-nav{display:flex;align-items:center;gap:clamp(14px,2vw,30px);margin-left:auto}
+  .site-nav a{font-size:.88rem;color:var(--v-ink-soft);white-space:nowrap}
+  .site-nav a:hover{color:var(--v-accent)}
+  .head-cta{font-size:.85rem;padding:.75em 1.2em}
+  .mob-nav{display:none}
+  @media (max-width:900px){
+    .site-head .v-wrap{flex-wrap:wrap;gap:0;min-height:0;padding-top:10px;padding-bottom:8px}
+    .brand{order:0}.head-cta{order:1;margin-left:auto}
+    .site-nav{display:none}
+    .mob-nav{display:flex;order:2;width:100%;gap:22px;overflow-x:auto;scrollbar-width:none;padding:10px 0 2px;margin-top:6px;border-top:1px solid var(--v-hair)}
+    .mob-nav::-webkit-scrollbar{display:none}
+    .mob-nav a{font-size:.85rem;color:var(--v-ink-soft);white-space:nowrap}
   }
 
-  * { box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body {
-    margin: 0;
-    background: var(--bg);
-    color: var(--text);
-    font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-    line-height: 1.6;
-    font-size: 17px;
+  /* первый экран */
+  .hero-photo{position:absolute;inset:0}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;object-position:62% 50%;transform:scale(1.06)}
+  .hero-scrim{position:absolute;inset:0;z-index:2;background:linear-gradient(90deg,rgba(12,22,16,.86) 0%,rgba(12,22,16,.68) 34%,rgba(12,22,16,.16) 68%,rgba(12,22,16,.02) 100%),linear-gradient(0deg,rgba(12,22,16,.42),transparent 38%)}
+  .hero-copy{position:relative;z-index:3;color:#f7f5ee;max-width:min(44rem,90vw);padding:clamp(4rem,12vh,9rem) 0 clamp(3rem,9vh,6rem)}
+  .hero-copy .eyebrow{color:#d3e0cd}
+  .hero-copy h1{font-size:clamp(2.5rem,5.4vw,4.8rem);line-height:1.02;max-width:15ch;margin:18px 0 20px;color:#fff}
+  .hero-copy .lead{color:#e4e9df;font-size:clamp(1.05rem,1.7vw,1.32rem);max-width:48ch}
+  .hero-actions{display:flex;flex-wrap:wrap;gap:12px;margin-top:32px}
+  .hero-actions a.v-btn--ghost{color:#fff;box-shadow:inset 0 0 0 1px rgba(255,255,255,.55)}
+  .hero-facts{display:flex;flex-wrap:wrap;gap:12px 30px;margin-top:clamp(32px,6vh,58px)}
+  .hero-facts div{border-left:1px solid rgba(255,255,255,.4);padding-left:14px}
+  .hero-facts b{display:block;font-family:var(--v-font-display);font-size:1.28rem;line-height:1.1}
+  .hero-facts small{color:#d5ded2;font-size:.82rem}
+  .hero-stamp{position:absolute;z-index:3;right:var(--v-gutter);bottom:clamp(2rem,6vh,4rem);color:#fff;text-align:right;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;opacity:.86}
+  @media (max-width:860px){
+    .hero-photo img{object-position:64% 50%}
+    .hero-scrim{background:linear-gradient(0deg,rgba(12,22,16,.94) 0%,rgba(12,22,16,.7) 42%,rgba(12,22,16,.18) 78%)}
+    .hero-copy{padding-top:clamp(3rem,10vh,6rem);padding-bottom:2rem}
+    .hero-copy h1{max-width:12ch}
+    .hero-stamp{display:none}
+    .hero-facts{gap:10px 20px}.hero-facts b{font-size:1.06rem}
   }
-  img { max-width: 100%; display: block; }
-  a { color: var(--accent); }
-  .wrap { max-width: 1120px; margin: 0 auto; padding: 0 16px; }
-  section { padding: 72px 0; }
-  h1, h2, h3 { line-height: 1.2; margin: 0 0 16px; }
-  h1 { font-size: clamp(2rem, 5vw, 3.3rem); }
-  h2 { font-size: clamp(1.6rem, 3.5vw, 2.3rem); }
-  h3 { font-size: 1.15rem; }
-  p { margin: 0 0 14px; }
-  .lead { color: var(--muted); font-size: 1.1rem; max-width: 640px; }
-  .eyebrow {
-    display: inline-block;
-    text-transform: uppercase;
-    letter-spacing: .12em;
-    font-size: .78rem;
-    color: var(--accent);
-    font-weight: 700;
-    margin-bottom: 10px;
-  }
-  .btn {
-    display: inline-block;
-    background: var(--accent);
-    color: #fff;
-    border: 0;
-    padding: 14px 26px;
-    border-radius: 10px;
-    font: inherit;
-    font-weight: 600;
-    text-decoration: none;
-    cursor: pointer;
-    transition: background .2s;
-  }
-  .btn:hover { background: var(--accent-dark); }
-  .btn.ghost {
-    background: transparent;
-    color: var(--text);
-    border: 1px solid var(--line);
-  }
-  .btn.ghost:hover { border-color: var(--accent); color: var(--accent); }
 
-  /* header */
-  header.top {
-    position: sticky;
-    top: 0;
-    z-index: 10;
-    background: color-mix(in srgb, var(--bg) 92%, transparent);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--line);
-  }
-  .top .wrap {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 64px;
-  }
-  .logo { font-weight: 800; font-size: 1.2rem; text-decoration: none; color: var(--text); }
-  .logo span { color: var(--accent); }
-  nav.menu { display: flex; gap: 22px; }
-  nav.menu a { color: var(--muted); text-decoration: none; font-size: .95rem; }
-  nav.menu a:hover { color: var(--text); }
-  .phone { font-weight: 700; color: var(--text); text-decoration: none; white-space: nowrap; }
+  /* галерея домов */
+  .house-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(14px,2.2vw,28px)}
+  .house-card figure{margin:0;overflow:hidden;background:#e5e4dc}
+  .house-card figure img{width:100%;aspect-ratio:4/3;object-fit:cover;transition:transform .7s var(--v-ease-out)}
+  .house-card:hover figure img{transform:scale(1.035)}
+  .house-card h3{font-size:1.16rem;margin:16px 0 6px}
+  .house-card p{color:var(--v-ink-soft);font-size:.92rem}
+  .house-card .tag{display:inline-block;margin-top:12px;font-size:.8rem;color:var(--v-accent);border:1px solid color-mix(in srgb,var(--v-accent) 35%,transparent);padding:5px 10px;border-radius:99px}
+  .fine{font-size:.82rem;color:var(--v-ink-soft);margin-top:22px}
+  @media (max-width:860px){.house-grid{grid-template-columns:1fr;gap:34px}.house-card figure img{aspect-ratio:16/10}}
 
-  /* hero */
-  .hero {
-    padding: 88px 0 80px;
-    background:
-      radial-gradient(900px 400px at 85% -10%, color-mix(in srgb, var(--accent) 18%, transparent), transparent 70%),
-      var(--bg);
+  /* разрез стены */
+  .cut-stage{min-height:100svh;display:flex;align-items:center}
+  .cut-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,5vw,80px);align-items:center;width:100%}
+  .cut-copy h2{font-size:clamp(1.9rem,3.5vw,2.9rem);line-height:1.08;margin:14px 0 18px}
+  .cut-copy p{color:var(--v-ink-soft);max-width:44ch}
+  .cut-layers li{display:flex;gap:14px;align-items:baseline;padding:10px 0;border-bottom:1px solid var(--v-hair);font-size:.94rem}
+  .cut-layers b{font-family:var(--v-font-display);color:var(--v-accent);min-width:2ch}
+  .cut-layers small{display:block;color:var(--v-ink-soft);font-size:.82rem}
+  .panel-fig{position:relative;height:440px;perspective:1000px}
+  .panel-slab{position:absolute;left:50%;width:min(100%,420px);height:76px;border-radius:2px;display:flex;align-items:center;justify-content:space-between;padding:0 18px;box-shadow:var(--v-e2);transform-style:preserve-3d}
+  .panel-slab.osb-a{top:96px;background:repeating-linear-gradient(96deg,#c9a473 0 10px,#b99263 10px 13px,#d2ad7e 13px 24px);transform:translateX(-50%) translateY(calc(var(--v-p,0) * -34px)) rotate(-1.5deg);z-index:3}
+  .panel-slab.core{top:186px;background:repeating-linear-gradient(0deg,#f7f5ed 0 8px,#e8e7df 8px 9px);transform:translateX(-50%) translateY(calc(var(--v-p,0) * 10px));z-index:2}
+  .panel-slab.osb-b{top:276px;background:repeating-linear-gradient(84deg,#c3a071 0 12px,#b48a59 12px 15px,#cda978 15px 26px);transform:translateX(-50%) translateY(calc(var(--v-p,0) * 52px)) rotate(1.5deg);z-index:1}
+  .panel-slab span{font-family:var(--v-font-display);font-size:.82rem;font-weight:600;color:#2c2419;background:rgba(255,255,255,.72);padding:5px 9px;border-radius:2px}
+  .panel-note{position:absolute;left:50%;bottom:12px;transform:translateX(-50%);white-space:nowrap;font-size:.82rem;color:var(--v-ink-soft)}
+  .panel-size{position:absolute;right:0;top:52px;font-family:var(--v-font-display);font-size:1rem;color:var(--v-accent)}
+  @media (max-width:860px){
+    .cut-stage{min-height:auto;padding-block:64px}
+    .cut-grid{grid-template-columns:1fr}
+    .panel-fig{height:340px}
+    .panel-slab.osb-a,.panel-slab.core,.panel-slab.osb-b{transform:translateX(-50%)}
+    .panel-slab.osb-a{top:60px}.panel-slab.core{top:150px}.panel-slab.osb-b{top:240px}
+    .panel-size{top:18px}
   }
-  .hero .grid {
-    display: grid;
-    grid-template-columns: 1.15fr 1fr;
-    gap: 48px;
-    align-items: center;
-  }
-  .hero .actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
-  .hero-facts {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 12px;
-    margin-top: 40px;
-  }
-  .fact {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 16px;
-  }
-  .fact b { display: block; font-size: 1.5rem; color: var(--accent); }
-  .fact small { color: var(--muted); font-size: .85rem; }
-  .hero-visual {
-    aspect-ratio: 4 / 3;
-    border-radius: 20px;
-    background:
-      linear-gradient(160deg, color-mix(in srgb, var(--accent) 35%, var(--surface)), var(--wood));
-    position: relative;
-    overflow: hidden;
-    box-shadow: 0 30px 60px -30px rgba(0,0,0,.35);
-  }
-  .hero-visual svg { position: absolute; inset: 0; width: 100%; height: 100%; }
 
-  /* advantages */
-  .cards {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-    gap: 18px;
-    margin-top: 36px;
-  }
-  .card {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 26px;
-  }
-  .card .ico {
-    width: 44px; height: 44px;
-    border-radius: 12px;
-    background: color-mix(in srgb, var(--accent) 14%, transparent);
-    color: var(--accent);
-    display: grid; place-items: center;
-    font-size: 1.3rem;
-    margin-bottom: 14px;
-  }
-  .card p { color: var(--muted); margin: 0; font-size: .97rem; }
+  /* этапы */
+  .process-grid{display:grid;grid-template-columns:.95fr 1.05fr;gap:clamp(30px,5vw,80px);align-items:start}
+  .process-photo{position:sticky;top:100px}
+  .process-photo img{width:100%;aspect-ratio:4/3;object-fit:cover;background:#e5e4dc}
+  .process-photo figcaption{font-size:.84rem;color:var(--v-ink-soft);margin-top:10px}
+  .steps{list-style:none;counter-reset:s}
+  .steps li{counter-increment:s;display:grid;grid-template-columns:44px 1fr;gap:18px;padding:22px 0;border-top:1px solid var(--v-hair)}
+  .steps li::before{content:"0" counter(s);font-family:var(--v-font-display);font-weight:700;color:var(--v-accent);font-size:1.1rem;padding-top:2px}
+  .steps h3{font-size:1.14rem;margin-bottom:6px}
+  .steps p{color:var(--v-ink-soft);font-size:.96rem}
+  @media (max-width:860px){.process-grid{grid-template-columns:1fr}.process-photo{position:static;order:2}.steps{order:1}}
 
-  /* how it works */
-  .alt { background: var(--surface); border-block: 1px solid var(--line); }
-  .steps {
-    counter-reset: step;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 18px;
-    margin-top: 36px;
-    list-style: none;
-    padding: 0;
-  }
-  .steps li {
-    counter-increment: step;
-    border-top: 3px solid var(--accent);
-    padding-top: 16px;
-  }
-  .steps li::before {
-    content: "0" counter(step);
-    display: block;
-    font-weight: 800;
-    color: var(--accent);
-    font-size: 1.4rem;
-    margin-bottom: 6px;
-  }
-  .steps p { color: var(--muted); margin: 0; font-size: .96rem; }
+  /* калькулятор */
+  .calc-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(28px,5vw,72px);align-items:start}
+  .calc-panel{background:var(--v-surface);border:1px solid var(--v-hair);padding:clamp(22px,3vw,38px);box-shadow:var(--v-e1)}
+  .field{margin-bottom:26px}
+  .field label{display:flex;justify-content:space-between;gap:12px;font-weight:600;margin-bottom:10px;font-size:.95rem}
+  .field output{font-family:var(--v-font-display);color:var(--v-accent)}
+  .field input[type=range]{width:100%;accent-color:var(--v-accent)}
+  .field select{width:100%;padding:12px 14px;border:1px solid var(--v-hair-strong);background:var(--v-canvas);color:var(--v-ink);border-radius:2px;font:inherit}
+  .calc-total{font-family:var(--v-font-display);font-size:clamp(2rem,4vw,3rem);line-height:1.05;color:var(--v-accent);margin-top:6px}
+  .calc-note{font-size:.84rem;color:var(--v-ink-soft);margin-top:8px}
+  .calc-includes{display:grid;gap:8px;margin:24px 0 26px;font-size:.94rem}
+  .calc-includes li{padding-left:22px;position:relative;color:var(--v-ink-soft)}
+  .calc-includes li::before{content:"✓";position:absolute;left:0;color:var(--v-accent);font-weight:700}
+  @media (max-width:860px){.calc-grid{grid-template-columns:1fr}}
 
-  /* projects */
-  .filters { display: flex; gap: 8px; flex-wrap: wrap; margin: 24px 0 28px; }
-  .chip {
-    border: 1px solid var(--line);
-    background: var(--surface);
-    color: var(--text);
-    padding: 8px 16px;
-    border-radius: 999px;
-    font: inherit;
-    font-size: .92rem;
-    cursor: pointer;
-  }
-  .chip.active { background: var(--accent); border-color: var(--accent); color: #fff; }
-  .projects {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-  }
-  .project {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-  }
-  .project .pic {
-    aspect-ratio: 16 / 10;
-    background: linear-gradient(135deg, color-mix(in srgb, var(--accent) 25%, var(--surface)), var(--line));
-    display: grid;
-    place-items: center;
-    color: var(--muted);
-    font-size: .9rem;
-  }
-  .project .body { padding: 20px; display: flex; flex-direction: column; gap: 10px; flex: 1; }
-  .project .meta { display: flex; gap: 14px; color: var(--muted); font-size: .9rem; flex-wrap: wrap; }
-  .project .price { font-weight: 700; font-size: 1.1rem; margin-top: auto; }
-  .project .price small { font-weight: 400; color: var(--muted); font-size: .85rem; }
+  /* интерьер */
+  .inside-media{position:relative;min-height:clamp(420px,62vw,660px);overflow:hidden;display:flex;align-items:end}
+  .inside-media img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:60% 50%}
+  .inside-scrim{position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,22,16,.86),rgba(12,22,16,.24) 72%)}
+  .inside-copy{position:relative;z-index:2;color:#fff;padding:clamp(30px,5vw,64px);max-width:34rem}
+  .inside-copy h2{font-size:clamp(1.8rem,3.4vw,2.8rem);line-height:1.08;margin:14px 0 16px}
+  .inside-copy p{color:#e2e8df}
+  @media (max-width:860px){.inside-scrim{background:linear-gradient(0deg,rgba(12,22,16,.92),rgba(12,22,16,.2) 70%)}.inside-copy{padding:28px 20px}}
 
-  /* calculator */
-  .calc {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    align-items: start;
-  }
-  .panel {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: var(--radius);
-    padding: 28px;
-  }
-  .field { margin-bottom: 20px; }
-  .field label { display: flex; justify-content: space-between; font-weight: 600; margin-bottom: 8px; }
-  .field output { color: var(--accent); }
-  input[type="range"] { width: 100%; accent-color: var(--accent); }
-  .result { font-size: 2.2rem; font-weight: 800; color: var(--accent); }
-  .result-note { color: var(--muted); font-size: .9rem; margin-top: 6px; }
-  .checks { list-style: none; padding: 0; margin: 0 0 20px; }
-  .checks li { padding: 6px 0 6px 28px; position: relative; color: var(--muted); }
-  .checks li::before { content: "✓"; position: absolute; left: 0; color: var(--accent); font-weight: 800; }
+  /* сравнение */
+  .compare{width:100%;border-collapse:collapse;font-size:.95rem}
+  .compare th,.compare td{text-align:left;padding:16px 18px;border-bottom:1px solid var(--v-hair)}
+  .compare thead th{font-family:var(--v-font-display);font-size:.9rem;font-weight:600;color:var(--v-ink-soft)}
+  .compare th.us{color:var(--v-accent)}
+  .compare td:first-child{font-weight:600}
+  .compare td.us{color:var(--v-accent);font-weight:600}
+  .table-scroll{overflow-x:auto}
+  @media (max-width:700px){.compare{min-width:620px}.compare th,.compare td{padding:12px}}
 
-  /* compare */
-  .compare { width: 100%; border-collapse: collapse; margin-top: 28px; background: var(--surface); border-radius: var(--radius); overflow: hidden; }
-  .compare th, .compare td { padding: 14px 16px; text-align: left; border-bottom: 1px solid var(--line); font-size: .96rem; }
-  .compare th { background: color-mix(in srgb, var(--accent) 10%, var(--surface)); }
-  .compare td:first-child { font-weight: 600; }
-  .compare .us { color: var(--accent); font-weight: 700; }
+  /* вопросы */
+  .faq details{background:var(--v-surface);border:1px solid var(--v-hair);padding:20px 24px;margin-bottom:10px}
+  .faq summary{cursor:pointer;font-weight:600;font-family:var(--v-font-display)}
+  .faq details p{margin-top:12px;color:var(--v-ink-soft);font-size:.96rem}
 
-  /* faq */
-  details {
-    background: var(--surface);
-    border: 1px solid var(--line);
-    border-radius: 12px;
-    padding: 18px 22px;
-    margin-bottom: 12px;
-  }
-  summary { cursor: pointer; font-weight: 600; }
-  details p { color: var(--muted); margin: 12px 0 0; }
+  /* контакты */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(30px,5vw,80px);align-items:start}
+  .contact-grid h2{font-size:clamp(1.9rem,3.5vw,2.9rem);line-height:1.08;margin:14px 0 18px}
+  .contact-list{margin-top:28px;display:grid;gap:12px}
+  .contact-list div{padding-top:12px;border-top:1px solid rgba(255,255,255,.18)}
+  .contact-list small{display:block;color:#aebfae;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em}
+  .contact-list a,.contact-list span{font-size:1.05rem}
+  .lead-form{background:var(--v-surface);color:var(--v-ink);padding:clamp(22px,3vw,36px);display:grid;gap:16px}
+  .lead-form label{font-weight:600;font-size:.9rem;display:block;margin-bottom:7px}
+  .lead-form input,.lead-form select{width:100%;padding:13px 14px;border:1px solid var(--v-hair-strong);border-radius:2px;background:#fff;color:var(--v-ink);font:inherit}
+  .lead-form .v-btn{justify-content:center;width:100%}
+  .lead-form small{font-size:.78rem;color:var(--v-ink-soft)}
+  .success{display:none;color:var(--v-accent);font-weight:600}
+  @media (max-width:860px){.contact-grid{grid-template-columns:1fr}}
 
-  /* contact */
-  .contact { background: var(--wood); color: #f3ece2; }
-  .contact .lead { color: #cbbfb1; }
-  .contact .eyebrow { color: #e9a06a; }
-  form.lead-form {
-    background: var(--surface);
-    color: var(--text);
-    border-radius: var(--radius);
-    padding: 28px;
-    display: grid;
-    gap: 14px;
-  }
-  form.lead-form input, form.lead-form select {
-    width: 100%;
-    padding: 13px 14px;
-    border: 1px solid var(--line);
-    border-radius: 10px;
-    font: inherit;
-    background: var(--bg);
-    color: var(--text);
-  }
-  form.lead-form .btn { width: 100%; text-align: center; }
-  form.lead-form small { color: var(--muted); font-size: .8rem; }
-  .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: start; }
-  .contact-info p { margin-bottom: 18px; }
-  .contact-info b { color: #fff; }
-  .success { display: none; color: var(--accent-dark); font-weight: 600; }
-
-  footer { padding: 28px 0; color: var(--muted); font-size: .88rem; border-top: 1px solid var(--line); }
-  footer .wrap { display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap; }
-
-  @media (max-width: 860px) {
-    nav.menu { display: none; }
-    .hero .grid, .calc, .contact-grid { grid-template-columns: 1fr; }
-    .hero-facts { grid-template-columns: 1fr 1fr 1fr; }
-    section { padding: 56px 0; }
-    .compare { font-size: .88rem; }
-    .compare th, .compare td { padding: 10px 8px; }
-  }
-  @media (max-width: 520px) {
-    body { font-size: 16px; }
-    .hero { padding: 56px 0 48px; }
-    .hero-facts { grid-template-columns: 1fr 1fr; }
-    .hero-facts .fact:last-child { grid-column: span 2; }
-    .phone { font-size: .9rem; }
-  }
+  footer{border-top:1px solid var(--v-hair);padding:30px 0 44px;font-size:.82rem;color:var(--v-ink-soft)}
+  footer .v-wrap{display:flex;flex-wrap:wrap;gap:10px 30px;justify-content:space-between}
 </style>
 </head>
 <body>
+<div class="v-page" id="top">
+  <div data-v-progress></div>
 
-<header class="top">
-  <div class="wrap">
-    <a href="#top" class="logo">СИП<span>-Дом</span></a>
-    <nav class="menu">
-      <a href="#advantages">Преимущества</a>
-      <a href="#process">Как строим</a>
-      <a href="#projects">Проекты</a>
-      <a href="#calc">Калькулятор</a>
-      <a href="#faq">Вопросы</a>
-    </nav>
-    <a href="tel:+70000000000" class="phone">+7 (000) 000-00-00</a>
-  </div>
-</header>
-
-<main id="top">
-
-  <section class="hero">
-    <div class="wrap grid">
-      <div>
-        <span class="eyebrow">Производство и строительство под ключ</span>
-        <h1>Дом из СИП-панелей: тёплый, быстрый и по фиксированной смете</h1>
-        <p class="lead">Изготавливаем стеновые и кровельные панели на заводе, привозим на участок и собираем дом за считаные недели. Без «сюрпризов» в стоимости и сроках.</p>
-        <div class="actions">
-          <a href="#calc" class="btn">Рассчитать стоимость</a>
-          <a href="#projects" class="btn ghost">Смотреть проекты</a>
-        </div>
-        <div class="hero-facts">
-          <div class="fact"><b>от 6 недель</b><small>от договора до ключей</small></div>
-          <div class="fact"><b>200 мм</b><small>толщина стены с утеплением</small></div>
-          <div class="fact"><b>10 лет</b><small>гарантии на конструкцию</small></div>
-        </div>
-      </div>
-      <div class="hero-visual" role="img" aria-label="Иллюстрация дома из СИП-панелей">
-        <svg viewBox="0 0 400 300" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-          <rect width="400" height="300" fill="none"/>
-          <polygon points="60,130 200,50 340,130" fill="#3d2e22" opacity=".85"/>
-          <rect x="85" y="130" width="230" height="130" fill="#f3ece2" opacity=".95"/>
-          <rect x="85" y="130" width="230" height="10" fill="#b5652b"/>
-          <rect x="175" y="180" width="50" height="80" fill="#b5652b"/>
-          <rect x="110" y="165" width="42" height="42" fill="#3d2e22" opacity=".6"/>
-          <rect x="248" y="165" width="42" height="42" fill="#3d2e22" opacity=".6"/>
-          <line x1="85" y1="195" x2="315" y2="195" stroke="#b5652b" stroke-width="2" opacity=".5"/>
-          <rect x="40" y="260" width="320" height="8" fill="#3d2e22" opacity=".5"/>
-        </svg>
-      </div>
+  <header class="site-head">
+    <div class="v-wrap">
+      <a class="brand" href="#top"><i>С</i><span>СИП</span>-Дом</a>
+      <nav class="site-nav" aria-label="Навигация">
+        <a href="#houses">Дома</a>
+        <a href="#tech">Технология</a>
+        <a href="#process">Как строим</a>
+        <a href="#calc">Смета</a>
+        <a href="#faq">Вопросы</a>
+      </nav>
+      <a href="#calc" class="v-btn head-cta">Рассчитать смету</a>
+      <nav class="mob-nav" aria-label="Навигация на телефоне">
+        <a href="#houses">Дома</a>
+        <a href="#tech">Технология</a>
+        <a href="#process">Как строим</a>
+        <a href="#calc">Смета</a>
+        <a href="#faq">Вопросы</a>
+        <a href="#contact">Контакты</a>
+      </nav>
     </div>
-  </section>
+  </header>
 
-  <section id="advantages">
-    <div class="wrap">
-      <span class="eyebrow">Преимущества</span>
-      <h2>Почему СИП-панели, а не бревно или кирпич</h2>
-      <p class="lead">Стена из СИП — это сразу несущая конструкция и утеплитель в одном элементе: меньше «мокрых» процессов, меньше швов и мостиков холода.</p>
-      <div class="cards">
-        <div class="card">
-          <div class="ico">🔥</div>
-          <h3>Тепло без лишних слоёв</h3>
-          <p>Утеплитель уже внутри панели. Низкие счета за отопление и ровная температура в доме.</p>
-        </div>
-        <div class="card">
-          <div class="ico">⏱</div>
-          <h3>Быстрая сборка</h3>
-          <p>Панели изготовлены на заводе с точностью до миллиметра. На площадке — монтаж, а не многомесячная кладка.</p>
-        </div>
-        <div class="card">
-          <div class="ico">🧾</div>
-          <h3>Смета без сюрпризов</h3>
-          <p>Перед договором — подробный проект и спецификация. Цена фиксируется и не растёт от «непредвиденных» работ.</p>
-        </div>
-        <div class="card">
-          <div class="ico">🌿</div>
-          <h3>Меньше отходов и мусора</h3>
-          <p>Раскрой на заводе — минимум обрезков на стройплощадке. Чисто и предсказуемо.</p>
-        </div>
-        <div class="card">
-          <div class="ico">🔊</div>
-          <h3>Хорошая шумоизоляция</h3>
-          <p>Плотная многослойная стена глушит улицу. Комфортно и днём, и ночью.</p>
-        </div>
-        <div class="card">
-          <div class="ico">🛡</div>
-          <h3>Гарантия 10 лет</h3>
-          <p>Письменная гарантия на несущие конструкции и ремонт по договору в течение всего гарантийного срока.</p>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <section id="process" class="alt">
-    <div class="wrap">
-      <span class="eyebrow">Как мы работаем</span>
-      <h2>От идеи до ключей — пять понятных шагов</h2>
-      <ol class="steps">
-        <li>
-          <h3>Заявка и выезд</h3>
-          <p>Расскажите о желаемом доме и участке. Бесплатно приедем на замер и оценим грунт и подключения.</p>
-        </li>
-        <li>
-          <h3>Проект и смета</h3>
-          <p>Готовим планировки, фасады и фиксированную смету. Вносим правки, пока всё не устроит.</p>
-        </li>
-        <li>
-          <h3>Договор и производство</h3>
-          <p>Подписываем договор с графиком. Изготавливаем панели на нашем заводе под ваш проект.</p>
-        </li>
-        <li>
-          <h3>Монтаж на участке</h3>
-          <p>Фундамент, сборка коробки и кровли. Вы получаете фото- и видеоотчёт по каждому этапу.</p>
-        </li>
-        <li>
-          <h3>Отделка и сдача</h3>
-          <p>Внутренние работы, инженерия и финальная приёмка. Передаём дом с полным комплектом документов.</p>
-        </li>
-      </ol>
-    </div>
-  </section>
-
-  <section id="projects">
-    <div class="wrap">
-      <span class="eyebrow">Проекты домов</span>
-      <h2>Готовые решения и типовые проекты</h2>
-      <p class="lead">Выберите понравившийся проект или закажите индивидуальный. Цены ориентировочные — точная смета считается по вашему участку.</p>
-
-      <div class="filters" role="group" aria-label="Фильтр по площади">
-        <button class="chip active" data-filter="all">Все</button>
-        <button class="chip" data-filter="small">до 100 м²</button>
-        <button class="chip" data-filter="mid">100–150 м²</button>
-        <button class="chip" data-filter="big">от 150 м²</button>
-      </div>
-
-      <div class="projects" id="projectList">
-        <article class="project" data-size="small">
-          <div class="pic">Фото проекта</div>
-          <div class="body">
-            <h3>«Компакт» — одноэтажный</h3>
-            <div class="meta"><span>72 м²</span><span>2 спальни</span><span>1 санузел</span></div>
-            <div class="price">от 2 690 000 ₽ <small>под ключ</small></div>
+  <main>
+    <section class="hero" data-v-act="pin" data-v-span="1.8" data-v-drift="#f2efe8" aria-labelledby="hero-title">
+      <div data-v-stage>
+        <div class="hero-photo" data-v-parallax="-0.4"><img src="assets/hero.webp" alt="Готовый дом из СИП-панелей с деревянной террасой у соснового леса"></div>
+        <div class="hero-scrim"></div>
+        <div class="v-wrap">
+          <div class="hero-copy" data-v-cue="0 1 0 0">
+            <span class="eyebrow">СИП-Дом · застройщик</span>
+            <h1 id="hero-title" class="v-display">Дома из СИП-панелей. Построенные, а не нарисованные</h1>
+            <p class="lead">Собираем дом из готовых панелей за 6–8 недель. Смета зафиксирована в договоре, а каждый этап вы принимаете по акту.</p>
+            <div class="hero-actions">
+              <a href="#calc" class="v-btn">Рассчитать смету</a>
+              <a href="#houses" class="v-btn v-btn--ghost">Смотреть дома</a>
+            </div>
+            <div class="hero-facts">
+              <div><b>174 мм</b><small>панель с утеплителем</small></div>
+              <div><b>6–8 недель</b><small>от договора до сдачи</small></div>
+              <div><b>10 лет</b><small>гарантия на конструкцию</small></div>
+            </div>
           </div>
-        </article>
-        <article class="project" data-size="small">
-          <div class="pic">Фото проекта</div>
-          <div class="body">
-            <h3>«Уют» — с мансардой</h3>
-            <div class="meta"><span>96 м²</span><span>3 спальни</span><span>2 санузла</span></div>
-            <div class="price">от 3 890 000 ₽ <small>под ключ</small></div>
+        </div>
+        <div class="hero-stamp">Технология SIP · фото объектов в демо</div>
+      </div>
+    </section>
+
+    <section class="sec" id="houses">
+      <div class="v-wrap">
+        <div class="sec-head" data-v-in>
+          <span class="eyebrow">Каталог</span>
+          <h2 class="v-display">Настоящие дома, а не рендеры</h2>
+          <p class="lead">Три типовых решения: от компактного дома для дачи до семейного с гаражом. Размеры и цены ориентировочные, точный проект считаем под ваш участок.</p>
+        </div>
+        <div class="house-grid" data-v-in data-v-stagger="110">
+          <article class="house-card">
+            <figure><img src="assets/house-sosna.webp" alt="Одноэтажный дом из СИП-панелей с деревянной террасой" loading="lazy"></figure>
+            <h3>«Сосна» · 96 м²</h3>
+            <p>Одноэтажный, две спальни, терраса. Для участка от 8 соток.</p>
+            <span class="tag">от 3 350 000 ₽ под ключ</span>
+          </article>
+          <article class="house-card">
+            <figure><img src="assets/house-panorama.webp" alt="Дом с панорамным остеклением и террасой при вечернем свете" loading="lazy"></figure>
+            <h3>«Панорама» · 124 м²</h3>
+            <p>Панорамное остекление гостиной, три спальни, выход в сад.</p>
+            <span class="tag">от 4 480 000 ₽ под ключ</span>
+          </article>
+          <article class="house-card">
+            <figure><img src="assets/house-semya.webp" alt="Двухэтажный дом из СИП-панелей с гаражом" loading="lazy"></figure>
+            <h3>«Семейный» · 140 м²</h3>
+            <p>Два этажа, четыре спальни, встроенный гараж и кладовая.</p>
+            <span class="tag">от 5 180 000 ₽ под ключ</span>
+          </article>
+        </div>
+        <p class="fine">В демо вместо снимков объектов стоит визуализация. На рабочем сайте эти места займут фотографии ваших построенных домов.</p>
+      </div>
+    </section>
+
+    <section id="tech" data-v-act="pin" data-v-span="2.4" data-v-drift="#e9e7de">
+      <div data-v-stage>
+        <div class="cut-stage">
+          <div class="v-wrap cut-grid">
+            <div class="cut-copy" data-v-cue="0.05 0.95 0.2 0.2">
+              <span class="eyebrow">Разрез стены</span>
+              <h2 class="v-display">Три слоя, которые работают как одна конструкция</h2>
+              <p>СИП-панель уже содержит утеплитель. На участке остаётся только собрать её на каркас, без кладки и «мокрых» процессов.</p>
+              <ul class="cut-layers" style="margin-top:26px">
+                <li data-v-cue="0.15 0.95"><b>01</b><span>OSB-3, 12 мм<small>жёсткая наружная обшивка</small></span></li>
+                <li data-v-cue="0.32 0.95"><b>02</b><span>ППС, 150 мм<small>утеплитель внутри панели</small></span></li>
+                <li data-v-cue="0.5 0.95"><b>03</b><span>OSB-3, 12 мм<small>внутренняя обшивка под отделку</small></span></li>
+              </ul>
+            </div>
+            <div class="panel-fig" aria-hidden="true">
+              <div class="panel-size">174 мм</div>
+              <div class="panel-slab osb-a"><span>OSB · 12 мм</span><span>01</span></div>
+              <div class="panel-slab core"><span>ППС · 150 мм</span><span>02</span></div>
+              <div class="panel-slab osb-b"><span>OSB · 12 мм</span><span>03</span></div>
+              <div class="panel-note">Слои расходятся при прокрутке</div>
+            </div>
           </div>
-        </article>
-        <article class="project" data-size="mid">
-          <div class="pic">Фото проекта</div>
-          <div class="body">
-            <h3>«Семейный» — двухэтажный</h3>
-            <div class="meta"><span>128 м²</span><span>4 спальни</span><span>гараж</span></div>
-            <div class="price">от 5 290 000 ₽ <small>под ключ</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec sec--paper" id="process">
+      <div class="v-wrap">
+        <div class="sec-head" data-v-in>
+          <span class="eyebrow">Как строим</span>
+          <h2 class="v-display">Пять этапов. Каждый виден и принимается по акту</h2>
+          <p class="lead">Вы знаете, что происходит на участке и за что платите. Фотоотчёт по каждому этапу, оплата после приёмки.</p>
+        </div>
+        <div class="process-grid">
+          <figure class="process-photo" data-v-in>
+            <img src="assets/build.webp" alt="Сборка стен из СИП-панелей на строительной площадке" loading="lazy">
+            <figcaption>Сборка стен из готовых панелей на участке</figcaption>
+          </figure>
+          <ol class="steps" data-v-in data-v-stagger="70">
+            <li><div><h3>Заявка и выезд</h3><p>Смотрим участок, обсуждаем планировку, подсказываем, где поставить дом.</p></div></li>
+            <li><div><h3>Проект и смета</h3><p>Планировки, фасады и подробная смета. Правки вносим до подписания договора.</p></div></li>
+            <li><div><h3>Производство панелей</h3><p>Изготавливаем панели по вашему проекту, раскраиваем с точностью до миллиметра.</p></div></li>
+            <li><div><h3>Монтаж и кровля</h3><p>Фундамент, сборка коробки и кровли. По каждому этапу присылаем фотоотчёт.</p></div></li>
+            <li><div><h3>Отделка и сдача</h3><p>Инженерия и внутренние работы. Передаём дом с полным комплектом документов.</p></div></li>
+          </ol>
+        </div>
+      </div>
+    </section>
+
+    <section class="sec" id="calc">
+      <div class="v-wrap calc-grid">
+        <div data-v-in>
+          <span class="eyebrow">Калькулятор</span>
+          <h2 class="v-display" style="font-size:clamp(1.9rem,3.5vw,2.9rem);line-height:1.08;margin:14px 0 18px">Прикиньте стоимость за минуту</h2>
+          <p class="lead">Ориентир по типовому проекту с отделкой под ключ. Точную цифру даём после выезда на участок и расчёта сметы.</p>
+          <ul class="calc-includes" style="margin-top:26px">
+            <li>Фундамент, панели и кровля включены</li>
+            <li>Окна и двери по выбранной комплектации</li>
+            <li>Смета перед подписанием договора</li>
+            <li>Оплата этапа после приёмки работ</li>
+          </ul>
+        </div>
+        <div class="calc-panel" data-v-in>
+          <div class="field">
+            <label for="area">Площадь дома <output id="areaOut">100 м²</output></label>
+            <input type="range" id="area" min="60" max="250" step="5" value="100">
           </div>
-        </article>
-        <article class="project" data-size="mid">
-          <div class="pic">Фото проекта</div>
-          <div class="body">
-            <h3>«Терраса» — с панорамным окном</h3>
-            <div class="meta"><span>140 м²</span><span>3 спальни</span><span>терраса</span></div>
-            <div class="price">от 6 050 000 ₽ <small>под ключ</small></div>
+          <div class="field">
+            <label for="floors">Этажность</label>
+            <select id="floors">
+              <option value="1">Одноэтажный</option>
+              <option value="1.5">Полтора этажа с мансардой</option>
+              <option value="2">Двухэтажный</option>
+            </select>
           </div>
-        </article>
-        <article class="project" data-size="big">
-          <div class="pic">Фото проекта</div>
-          <div class="body">
-            <h3>«Резиденция» — загородный дом</h3>
-            <div class="meta"><span>210 м²</span><span>5 спален</span><span>2 этажа</span></div>
-            <div class="price">от 9 400 000 ₽ <small>под ключ</small></div>
+          <div class="field">
+            <label for="finish">Отделка</label>
+            <select id="finish">
+              <option value="0">Черновая</option>
+              <option value="1" selected>Под ключ</option>
+            </select>
           </div>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <section id="calc" class="alt">
-    <div class="wrap calc">
-      <div>
-        <span class="eyebrow">Калькулятор</span>
-        <h2>Прикиньте стоимость за минуту</h2>
-        <p class="lead">Ориентировочный расчёт для типового дома с отделкой «под ключ». Точную смету даём после замера участка.</p>
-        <ul class="checks">
-          <li>Фундамент и кровля включены</li>
-          <li>Инженерные коммуникации — по проекту</li>
-          <li>Подробная смета перед подписанием договора</li>
-        </ul>
-      </div>
-      <div class="panel">
-        <div class="field">
-          <label for="area">Площадь дома <output id="areaOut">100 м²</output></label>
-          <input type="range" id="area" min="60" max="250" step="5" value="100">
-        </div>
-        <div class="field">
-          <label for="floors">Этажность</label>
-          <select id="floors" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:inherit">
-            <option value="1">Одноэтажный</option>
-            <option value="1.5">Полтора этажа (мансарда)</option>
-            <option value="2">Двухэтажный</option>
-          </select>
-        </div>
-        <div class="field">
-          <label for="finish">Отделка</label>
-          <select id="finish" style="width:100%;padding:12px;border-radius:10px;border:1px solid var(--line);background:var(--bg);color:var(--text);font:inherit">
-            <option value="0">Черновая</option>
-            <option value="1">Чистовая «под ключ»</option>
-          </select>
-        </div>
-        <div class="result" id="total">—</div>
-        <div class="result-note">Ориентир. Итог зависит от участка, грунта и выбранных материалов.</div>
-        <div style="margin-top:20px">
-          <a href="#contact" class="btn">Получить точную смету</a>
+          <div class="calc-total" id="total">—</div>
+          <div class="calc-note" id="perM2"></div>
+          <div style="margin-top:26px;display:flex;flex-wrap:wrap;gap:10px">
+            <a href="#contact" class="v-btn" id="calcCta">Получить точную смету</a>
+            <a href="#houses" class="v-btn v-btn--ghost">Посмотреть проекты</a>
+          </div>
+          <p class="calc-note" style="margin-top:18px">Расчёт демонстрационный и не является публичной офертой.</p>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="compare">
-    <div class="wrap">
-      <span class="eyebrow">Сравнение</span>
-      <h2>СИП против других технологий</h2>
-      <table class="compare">
-        <thead>
-          <tr><th></th><th class="us">СИП-дом</th><th>Кирпич</th><th>Брус</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>Срок строительства</td><td class="us">от 6 недель</td><td>4–8 месяцев</td><td>3–6 месяцев</td></tr>
-          <tr><td>Толщина стены с утеплением</td><td class="us">~200 мм</td><td>~500 мм</td><td>~200 мм + утеплитель</td></tr>
-          <tr><td>Усадка</td><td class="us">нет</td><td>нет</td><td>есть, 6–12 месяцев</td></tr>
-          <tr><td>Мокрые процессы на площадке</td><td class="us">минимум</td><td>много</td><td>средне</td></tr>
-          <tr><td>Точность сметы</td><td class="us">фиксированная</td><td>плавающая</td><td>плавающая</td></tr>
-        </tbody>
-      </table>
-    </div>
-  </section>
-
-  <section id="faq" class="alt">
-    <div class="wrap">
-      <span class="eyebrow">Вопросы</span>
-      <h2>Частые вопросы</h2>
-      <div style="margin-top:28px">
-        <details>
-          <summary>Дом из СИП-панелей не «задыхается» и не отсыревает?</summary>
-          <p>Панели проектируются с учётом паропроницаемости и вентиляции. При правильном монтаже и пароизоляции влага не копится внутри стены, а климат в доме комфортный.</p>
-        </details>
-        <details>
-          <summary>Можно ли строить зимой?</summary>
-          <p>Монтаж возможен и в холодный период при соблюдении технологии и прогреве основания. Сроки и условия обсуждаем индивидуально.</p>
-        </details>
-        <details>
-          <summary>Что входит в фиксированную смету?</summary>
-          <p>Проект, панели, фундамент, кровля, окна и двери по выбранной комплектации, монтаж и чистовая отделка, если выбрана. Все позиции перечислены в договоре.</p>
-        </details>
-        <details>
-          <summary>Есть ли ипотека и маткапитал?</summary>
-          <p>Работаем с программами ипотеки на загородное строительство и маткапиталом. Подскажем, какие документы понадобятся.</p>
-        </details>
-        <details>
-          <summary>Какие гарантии?</summary>
-          <p>10 лет на несущие конструкции, 2 года на инженерные системы и работы по монтажу. Условия прописываются в договоре.</p>
-        </details>
+    <section class="sec sec--tight" style="padding-top:0">
+      <div class="v-wrap">
+        <div class="inside-media" data-v-in>
+          <img src="assets/interior.webp" alt="Светлая гостиная дома из СИП-панелей с окном в сосновый лес" loading="lazy">
+          <div class="inside-scrim"></div>
+          <div class="inside-copy">
+            <span class="eyebrow" style="color:#c9d9c6">Внутри дома</span>
+            <h2 class="v-display">Тишина, ровная температура и свет</h2>
+            <p>Плотная стена гасит уличный шум, а утеплитель внутри панели помогает держать тепло зимой и прохладу летом.</p>
+          </div>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <section id="contact" class="contact">
-    <div class="wrap contact-grid">
-      <div class="contact-info">
-        <span class="eyebrow">Контакты</span>
-        <h2>Бесплатный замер и смета</h2>
-        <p class="lead">Оставьте заявку — перезвоним в течение рабочего дня и согласуем удобное время выезда.</p>
-        <p><b>Телефон:</b> +7 (000) 000-00-00</p>
-        <p><b>Email:</b> info@example.com</p>
-        <p><b>Адрес производства:</b> Адрес завода, город</p>
-        <p><b>Режим работы:</b> пн–сб, 9:00–19:00</p>
+    <section class="sec sec--paper" id="compare">
+      <div class="v-wrap">
+        <div class="sec-head" data-v-in>
+          <span class="eyebrow">Сравнение</span>
+          <h2 class="v-display">СИП против других технологий</h2>
+          <p class="lead">Сравнение по параметрам, которые обычно решают при выборе технологии строительства.</p>
+        </div>
+        <div class="table-scroll" data-v-in>
+          <table class="compare">
+            <thead><tr><th>Параметр</th><th class="us">СИП-дом</th><th>Кирпич</th><th>Брус</th></tr></thead>
+            <tbody>
+              <tr><td>Срок строительства</td><td class="us">6–8 недель</td><td>4–8 месяцев</td><td>3–6 месяцев</td></tr>
+              <tr><td>Толщина стены с утеплением</td><td class="us">174 мм</td><td>около 500 мм</td><td>200 мм + утеплитель</td></tr>
+              <tr><td>Усадка коробки</td><td class="us">нет</td><td>нет</td><td>есть, до 12 месяцев</td></tr>
+              <tr><td>Работы на участке</td><td class="us">сборка готовых панелей</td><td>кладка и мокрые процессы</td><td>кладка бруса</td></tr>
+              <tr><td>Точность сметы</td><td class="us">фиксируется в договоре</td><td>уточняется по ходу</td><td>уточняется по ходу</td></tr>
+            </tbody>
+          </table>
+        </div>
       </div>
-      <form class="lead-form" id="leadForm">
-        <div>
-          <label for="name" style="font-weight:600">Ваше имя</label>
-          <input id="name" name="name" required placeholder="Иван">
+    </section>
+
+    <section class="sec" id="faq">
+      <div class="v-wrap">
+        <div class="sec-head" data-v-in>
+          <span class="eyebrow">Вопросы</span>
+          <h2 class="v-display">Что обычно спрашивают</h2>
         </div>
-        <div>
-          <label for="phone" style="font-weight:600">Телефон</label>
-          <input id="phone" name="phone" type="tel" required placeholder="+7 (___) ___-__-__">
+        <div class="faq" data-v-in data-v-stagger="60">
+          <details><summary>Дом из СИП не отсыревает изнутри?</summary><p>Панели проектируются с учётом пароизоляции и вентиляции. При правильном монтаже влага не скапливается в стене, а в доме поддерживается ровный микроклимат.</p></details>
+          <details><summary>Можно ли строить зимой?</summary><p>Монтаж возможен и в холодный период. Условия и сроки обсуждаем отдельно, с учётом подготовки основания и погоды.</p></details>
+          <details><summary>Что входит в фиксированную смету?</summary><p>Проект, панели, фундамент, кровля, окна и двери по выбранной комплектации, монтаж и отделка, если она выбрана. Все позиции перечислены в договоре до первого платежа.</p></details>
+          <details><summary>Сколько длится стройка?</summary><p>Для типового проекта от договора до сдачи обычно 6–8 недель. Точный график зависит от площади, сложности фундамента и погоды.</p></details>
+          <details><summary>Есть ли гарантия?</summary><p>На несущие конструкции действует гарантия 10 лет. Условия на инженерные системы и работы прописываются в договоре до подписания.</p></details>
         </div>
-        <div>
-          <label for="plot" style="font-weight:600">Есть ли участок?</label>
-          <select id="plot" name="plot">
-            <option>Да, уже есть</option>
-            <option>Ищу участок</option>
-            <option>Пока думаю</option>
-          </select>
+      </div>
+    </section>
+
+    <section class="sec sec--ink" id="contact">
+      <div class="v-wrap contact-grid">
+        <div data-v-in>
+          <span class="eyebrow">Контакты</span>
+          <h2 class="v-display">Начнём с замера и сметы</h2>
+          <p class="lead">Оставьте заявку: перезвоним в рабочий день и согласуем время выезда на участок.</p>
+          <div class="contact-list">
+            <div><small>Телефон в демо</small><a href="tel:+70000000000">+7 (000) 000-00-00</a></div>
+            <div><small>Что дальше</small><span>Замер участка, проект и точная смета</span></div>
+            <div><small>Режим работы</small><span>Пн–сб, 9:00–19:00</span></div>
+          </div>
         </div>
-        <button class="btn" type="submit">Заказать замер</button>
-        <small>Нажимая кнопку, вы соглашаетесь на обработку персональных данных.</small>
-        <p class="success" id="success">Спасибо! Мы свяжемся с вами в ближайшее время.</p>
-      </form>
+        <form class="lead-form" id="leadForm" data-v-in>
+          <div>
+            <label for="name">Ваше имя</label>
+            <input id="name" name="name" required placeholder="Иван" autocomplete="name">
+          </div>
+          <div>
+            <label for="phone">Телефон</label>
+            <input id="phone" name="phone" type="tel" required placeholder="+7 (___) ___-__-__" autocomplete="tel">
+          </div>
+          <div>
+            <label for="plot">Участок</label>
+            <select id="plot" name="plot">
+              <option>Уже есть</option>
+              <option>Ищу участок</option>
+              <option>Пока только думаю</option>
+            </select>
+          </div>
+          <input type="hidden" id="briefArea" name="briefArea" value="">
+          <button class="v-btn" type="submit">Заказать замер</button>
+          <small>Отправка формы в демо не передаёт данные на сервер.</small>
+          <p class="success" id="success">Спасибо! В рабочем сайте заявка придёт застройщику.</p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="v-wrap">
+      <span>© 2026 СИП-Дом. Демонстрационный проект.</span>
+      <span>Фото и цены условные, не являются публичной офертой.</span>
     </div>
-  </section>
+  </footer>
+</div>
 
-</main>
-
-<footer>
-  <div class="wrap">
-    <span>© 2026 СИП-Дом. Все права защищены.</span>
-    <span>Цены ориентировочные и не являются публичной офертой.</span>
-  </div>
-</footer>
-
+<script src="vibe.js"></script>
 <script>
-  // Калькулятор: очень упрощённая модель для ориентира
+  // Калькулятор: ориентировочная модель для демо
   const area = document.getElementById('area');
-  const areaOut = document.getElementById('areaOut');
   const floors = document.getElementById('floors');
   const finish = document.getElementById('finish');
   const total = document.getElementById('total');
+  const perM2 = document.getElementById('perM2');
 
-  function fmt(n) {
-    return Math.round(n / 1000) * 1000;
-  }
   function recalc() {
     const a = Number(area.value);
-    const k = Number(floors.value) >= 2 ? 0.92 : 1; // на 2 этажах фундамент и кровля дешевле в пересчёте на м²
-    const perM2Base = 22000;                          // коробка и кровля, ₽/м²
-    const perM2Finish = Number(finish.value) ? 14000 : 0;
-    const price = fmt(a * (perM2Base * k + perM2Finish));
-    areaOut.textContent = a + ' м²';
+    const k = Number(floors.value) >= 2 ? 0.94 : Number(floors.value) > 1 ? 0.98 : 1;
+    const base = 34900 * k;
+    const price = Math.round(a * (base + (Number(finish.value) ? 13000 : 0)) / 1000) * 1000;
+    document.getElementById('areaOut').textContent = a + ' м²';
     total.textContent = 'от ' + price.toLocaleString('ru-RU') + ' ₽';
+    perM2.textContent = 'Ориентир: ' + Math.round((base + (Number(finish.value) ? 13000 : 0)) / 100) * 100 + ' ₽ за м². Итог зависит от участка и материалов.';
+    document.getElementById('briefArea').value = a + ' м², ' + (Number(floors.value) >= 2 ? '2 этажа' : Number(floors.value) > 1 ? 'мансарда' : '1 этаж') + ', ' + (Number(finish.value) ? 'под ключ' : 'черновая');
   }
   [area, floors, finish].forEach(el => el.addEventListener('input', recalc));
   recalc();
 
-  // Фильтр проектов
-  document.querySelectorAll('.chip').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.chip').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const f = btn.dataset.filter;
-      document.querySelectorAll('#projectList .project').forEach(card => {
-        card.style.display = (f === 'all' || card.dataset.size === f) ? '' : 'none';
-      });
-    });
-  });
-
-  // Форма (демо: без отправки на сервер)
+  // Форма: демо без отправки
   document.getElementById('leadForm').addEventListener('submit', e => {
     e.preventDefault();
     e.target.querySelectorAll('input, select, button').forEach(el => el.disabled = true);
     document.getElementById('success').style.display = 'block';
   });
+
+  Vibe.mount(document.querySelector('.v-page'));
 </script>
 </body>
 </html>
